@@ -1,0 +1,34 @@
+name: Capstone Workflow
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+ 
+jobs:
+  testjob:
+            name: Test Job
+            runs-on: ubuntu-latest
+            steps:
+            - name: Step One
+              uses: actions/checkout@v3
+            - name: Testing Step
+              run: |
+                cd capstone_project
+                cd hello-world
+                npm install
+                npm test
+                
+  buildjob:
+            needs: [testjob]
+            name: Build Job
+            runs-on: ubuntu-latest
+            steps:
+            - name: Step One
+              uses: actions/checkout@v3
+            - name: Testing Step
+              run: |
+                cd capstone_project
+                cd hello-world
+                npm run build
+  
