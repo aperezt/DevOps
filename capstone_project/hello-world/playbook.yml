@@ -1,0 +1,9 @@
+- name: Modify Greeting
+  hosts: all
+
+  tasks:
+    - name: Copy App File
+      ansible.builtin.lineinfile:
+        path: src/App.js
+        search_string: 'World'
+        line: DevOps
