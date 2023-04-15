@@ -1,7 +1,10 @@
 - name: Modify Greeting
   hosts: all
+  become: true
 
   tasks:
+    # - name: Check Connectivity
+    #   ansible.builtin.ping: 
     - name: Copy App File
       ansible.builtin.lineinfile:
         path: src/App.js
